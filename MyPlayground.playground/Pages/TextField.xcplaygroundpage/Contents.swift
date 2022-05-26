@@ -1,6 +1,10 @@
 import Combine
 import SwiftUI
 
+/**
+ * Customizing TextField with TextFieldStyle
+ */
+
 // MARK: - Custom TextFieldStyle
 struct ClearTextFieldStyle: TextFieldStyle {
   func _body(configuration: TextField<_Label>) -> some View {

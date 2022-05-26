@@ -3,6 +3,10 @@
 import AVKit
 import SwiftUI
 
+/**
+ * Customizing AVPlayerViewController to support PiP video player state
+ */
+
 // MARK: - Wrapped Video Player
 struct VideoPlayerView: UIViewControllerRepresentable {
   typealias UIViewControllerType = AVPlayerViewController
@@ -119,9 +123,13 @@ extension VideoPlayerCoordinator: AVPlayerViewControllerDelegate {
 // MARK: - Preview
 import PlaygroundSupport
 
-let videoURL = URL(string: "https://youtu.be/k2-ygljRjsk")!
+let videoURL = URL(string: "https://drive.proton.me/urls/8RFF61KJ34#GWTaIUGpGiwk")!
 let player = AVPlayer(url: videoURL)
-let videoPlayer = VideoPlayerView(model: .init(player: player))
+let videoPlayerModel = VideoPlayerViewModel(player: player)
+let videoPlayer = VideoPlayerView(model: videoPlayerModel)
+  .onAppear {
+    videoPlayerModel.play()
+  }
 
 PlaygroundPage.current.liveView = UIHostingController(rootView: videoPlayer)
 

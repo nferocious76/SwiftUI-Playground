@@ -3,5 +3,6 @@
     <pages>
         <page name='AVKit'/>
         <page name='TextField'/>
+        <page name='Shape'/>
     </pages>
 </playground>
