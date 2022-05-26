@@ -1,19 +1,7 @@
 import Combine
 import SwiftUI
-import PlaygroundSupport
 
-struct TestView: View {
-  @State var input: String = ""
-  var body: some View {
-    Text("Hello, playground")
-    TextField("Clear input field...", text: $input)
-      .textFieldStyle(ClearTextFieldStyle())
-  }
-}
-
-PlaygroundPage.current.liveView = UIHostingController(rootView: TestView())
-
-// Custom TextFieldStyle
+// MARK: - Custom TextFieldStyle
 struct ClearTextFieldStyle: TextFieldStyle {
   func _body(configuration: TextField<_Label>) -> some View {
     HStack {
@@ -35,5 +23,19 @@ struct ClearTextFieldStyle: TextFieldStyle {
     .border(.green, width: 1)
   }
 }
+
+// MARK: - Preview
+import PlaygroundSupport
+
+struct TestView: View {
+  @State var input: String = ""
+  var body: some View {
+    Text("Hello, playground")
+    TextField("Clear input field...", text: $input)
+      .textFieldStyle(ClearTextFieldStyle())
+  }
+}
+
+PlaygroundPage.current.liveView = UIHostingController(rootView: TestView())
 
 //: [Next](@next)
