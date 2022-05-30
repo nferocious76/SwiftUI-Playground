@@ -3,6 +3,7 @@
 import Foundation
 
 // MARK: - Date strings
+// Reference: https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table
 let dateFormatter = DateFormatter()
 dateFormatter.dateStyle = .medium
 dateFormatter.timeStyle = .short
@@ -43,6 +44,7 @@ relativeDateFormatter.dateTimeStyle = .named
 relativeDateFormatter.localizedString(from: DateComponents(day: -13))
 
 // MARK: - Measurements
+// Reference: https://developer.apple.com/documentation/foundation/units_and_measurement
 let measurementFormatter = MeasurementFormatter()
 //measurementFormatter.unitOptions = .naturalScale
 measurementFormatter.numberFormatter.maximumFractionDigits = 1
@@ -81,5 +83,14 @@ nameFormatter.string(from: nameComponents)
 nameFormatter.style = .abbreviated
 nameFormatter.string(from: nameComponents)
 
+// MARK: - Lists Formatter
+ListFormatter.localizedString(byJoining: ["English, Japanese", "Spanish"])
+
+// MARK: - Numbers
+let numberFormatter = NumberFormatter()
+numberFormatter.numberStyle = .percent
+numberFormatter.maximumFractionDigits = 2
+numberFormatter.decimalSeparator = "."
+numberFormatter.string(from: 0.32940)
 
 //: [Next](@next)
