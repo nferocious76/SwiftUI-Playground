@@ -31,12 +31,30 @@ struct ClearTextFieldStyle: TextFieldStyle {
 // MARK: - Preview
 import PlaygroundSupport
 
+/**
+ * Applying field focus and custom styling
+ */
+
 struct TestView: View {
+  enum Field: Hashable {
+    case field1
+    case field2
+  }
+
   @State var input: String = ""
+  @FocusState var focusedField: Field?
+
   var body: some View {
     Text("Hello, playground")
-    TextField("Clear input field...", text: $input)
-      .textFieldStyle(ClearTextFieldStyle())
+    TextField("Clear input field...", text: $input, onCommit: {
+      focusedField = .field2
+    })
+    .textFieldStyle(ClearTextFieldStyle())
+    .focused($focusedField, equals: .field1)
+
+    // Focus state
+    TextField("Focus input field...", text: $input)
+      .focused($focusedField, equals: .field2)
   }
 }
 

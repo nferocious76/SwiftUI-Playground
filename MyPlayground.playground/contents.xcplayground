@@ -4,5 +4,7 @@
         <page name='AVKit'/>
         <page name='TextField'/>
         <page name='Shape'/>
+        <page name='Routing'/>
+        <page name='Formatter'/>
     </pages>
 </playground>
