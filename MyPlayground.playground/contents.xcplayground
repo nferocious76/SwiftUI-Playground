@@ -6,5 +6,6 @@
         <page name='Shape'/>
         <page name='Routing'/>
         <page name='Formatter'/>
+        <page name='Caching'/>
     </pages>
 </playground>
