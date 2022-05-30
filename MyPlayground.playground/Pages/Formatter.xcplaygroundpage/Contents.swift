@@ -42,4 +42,44 @@ let relativeDateFormatter = RelativeDateTimeFormatter()
 relativeDateFormatter.dateTimeStyle = .named
 relativeDateFormatter.localizedString(from: DateComponents(day: -13))
 
+// MARK: - Measurements
+let measurementFormatter = MeasurementFormatter()
+//measurementFormatter.unitOptions = .naturalScale
+measurementFormatter.numberFormatter.maximumFractionDigits = 1
+
+let temperatureCelcius = Measurement<UnitTemperature>(value: 21, unit: .celsius)
+let temperatureFahrenheit = Measurement<UnitTemperature>(value: 21, unit: .fahrenheit)
+measurementFormatter.string(from: temperatureCelcius)
+measurementFormatter.string(from: temperatureFahrenheit)
+
+let speed = Measurement<UnitSpeed>(value: 129, unit: .kilometersPerHour)
+measurementFormatter.string(from: speed)
+
+let pressure = Measurement<UnitPressure>(value: 1.34, unit: .bars)
+measurementFormatter.string(from: pressure)
+
+// MARK: - Name Formatter
+let nameFormatter = PersonNameComponentsFormatter()
+var nameComponents = PersonNameComponents()
+nameComponents.familyName = "Hipona"
+nameComponents.givenName = "Neil Francis"
+nameComponents.middleName = "Ramirez"
+
+// Full name
+nameFormatter.style = .long
+nameFormatter.string(from: nameComponents)
+
+// First and Last name
+nameFormatter.style = .medium
+nameFormatter.string(from: nameComponents)
+
+// First name
+nameFormatter.style = .short
+nameFormatter.string(from: nameComponents)
+
+// Initials
+nameFormatter.style = .abbreviated
+nameFormatter.string(from: nameComponents)
+
+
 //: [Next](@next)
