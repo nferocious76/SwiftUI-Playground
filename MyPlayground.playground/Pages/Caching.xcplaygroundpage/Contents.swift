@@ -2,8 +2,10 @@
 
 import Foundation
 
+// MARK: - Caching Manager
 protocol CacheItemStoreableProtocol: Encodable {
   func encode() throws -> Data
+  func jsonDictionary() -> [String: Any]
 }
 protocol CacheItemRetrievableProtocol: Decodable {
   static func load(from store: CacheManager, forKey key: String) -> Self?
@@ -11,7 +13,7 @@ protocol CacheItemRetrievableProtocol: Decodable {
 }
 typealias CacheItemProtocol = CacheItemStoreableProtocol & CacheItemRetrievableProtocol
 
-class CacheManager {
+class CacheManager: ObservableObject {
   private let defaults: UserDefaults
   let decoder = JSONDecoder()
 
@@ -45,6 +47,7 @@ class CacheManager {
   }
 }
 
+// MARK: - Codable Extension
 extension Encodable {
   func encode() throws -> Data {
     return try JSONEncoder().encode(self)
@@ -80,6 +83,7 @@ extension Decodable {
   }
 }
 
+// MARK: - Sample Usage
 struct ModelToCache: CacheItemProtocol {
   let id: UUID
   let modelName: String
