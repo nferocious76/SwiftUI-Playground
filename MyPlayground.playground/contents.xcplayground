@@ -7,5 +7,6 @@
         <page name='Routing'/>
         <page name='Formatter'/>
         <page name='Caching'/>
+        <page name='Combine+MergePublishers'/>
     </pages>
 </playground>
