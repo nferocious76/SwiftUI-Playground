@@ -9,5 +9,6 @@
         <page name='Caching'/>
         <page name='Publishers+Merge'/>
         <page name='Publisher+Mutate'/>
+        <page name='Publisher+MapToFunction'/>
     </pages>
 </playground>
