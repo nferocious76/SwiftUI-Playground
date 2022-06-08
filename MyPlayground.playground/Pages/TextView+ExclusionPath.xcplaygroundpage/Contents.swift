@@ -5,11 +5,15 @@ import SwiftUI
 import UIKit
 import PlaygroundSupport
 
-var greeting = "Hello, playground"
+var greeting = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
 
-String(greeting[...greeting.startIndex])
+var initialText: String {
+  String(greeting[...greeting.startIndex])
+}
 
-String(greeting[greeting.index(after: greeting.startIndex)...])
+var bodyText: String {
+  String(greeting[greeting.index(after: greeting.startIndex)...])
+}
 
 struct TextView: UIViewRepresentable {
   typealias UIViewType = UITextView
@@ -100,20 +104,20 @@ struct TextView: UIViewRepresentable {
 func createView() -> some View {
   VStack(spacing: 24) {
     let path = UIBezierPath(rect: CGRect(x: 50, y: 50, width: 50, height: 50))
-    TextView(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    TextView(text: greeting,
              textAlignment: .justified,
              exclusionPaths: [path])
     .background(.gray)
 
     ZStack {
       let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 50, height: 50))
-      TextView(text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n\nIt was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      TextView(text: bodyText,
                exclusionPaths: [path])
       .background(.orange)
       .overlay {
         GeometryReader { geometry in
           HStack {
-            Text("T")
+            Text(initialText)
               .font(Font.system(size: 50, weight: .bold, design: .rounded))
               .foregroundColor(.green)
               .background(.blue)
