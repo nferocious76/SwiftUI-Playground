@@ -98,11 +98,13 @@ struct TextView: UIViewRepresentable {
 
   func updateUIView(_ uiView: UITextView, context: Context) {
     uiView.text = text
+    uiView.font = font
   }
 }
 
 func createView() -> some View {
   VStack(spacing: 24) {
+    let font = UIFont.systemFont(ofSize: 15, weight: .bold)
     let path = UIBezierPath(rect: CGRect(x: 50, y: 50, width: 50, height: 50))
     TextView(text: greeting,
              textAlignment: .justified,
@@ -112,16 +114,17 @@ func createView() -> some View {
     ZStack {
       let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 50, height: 50))
       TextView(text: bodyText,
+               font: font,
                exclusionPaths: [path])
       .background(.orange)
       .overlay {
         GeometryReader { geometry in
           HStack {
             Text(initialText)
-              .font(Font.system(size: 50, weight: .bold, design: .rounded))
+              .font(Font.system(size: 90, weight: .bold, design: .rounded))
               .foregroundColor(.green)
-              .background(.blue)
-              .frame(width: 50, height: 50, alignment: .center)
+              //.background(.blue)
+              .frame(width: 50, height: 50, alignment: .top)
           }
           .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
         }
