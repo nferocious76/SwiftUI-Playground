@@ -10,5 +10,6 @@
         <page name='Publishers+Merge'/>
         <page name='Publisher+Mutate'/>
         <page name='Publisher+MapToFunction'/>
+        <page name='Text+ExclusionPath'/>
     </pages>
 </playground>
